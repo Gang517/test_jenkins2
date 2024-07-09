@@ -25,9 +25,9 @@ pipeline {
         stage('build WAR'){
             steps{
                 script{
-                    def mvnHome = tool name:'Maven', type:'hudson.task.Maven$MavenInstallation'
+                    def mvnHome = tool name:'Maven', type:'hudson.tasks.Maven$MavenInstallation'
                     withEnv(["MAVEN_HOME=${mvnHome}"]) {
-                        //pom.xml에 version 노드의 이름으로 war가 targie 디렉토리에 생성된다.
+                        //pom.xml에 version 노드의 이름으로 war가 targit 디렉토리에 생성된다.
                         bat "\"${mvnHome}\\bin\\mvn\" clean package-DskipTests"
                     }
                 }
