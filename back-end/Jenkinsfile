@@ -6,8 +6,8 @@ pipeline {
     }
 
     environment{
-        JAVA_HOME = 'D:\\dev\\java-11-openjdk-11.0.15.9-1' //자바가 설치된 경로
-        PATH = "${env.JAVA_HOME}\\bin;${env.PATH}"
+        JAVA_HOME = 'C:/dev/java-11-openjdk-11.0.15.9-1' //자바가 설치된 경로
+        PATH = "${env.JAVA_HOME}/bin;${env.PATH}"
     }
 
     // trigger{
@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                     def warFile = 'target\\sist-1.0.0-BUILD-SNAPSHOT.war'
-                    def destDir = 'd:\\test_docker'
+                    def destDir = 'c:\\test_docker'
                     bat """
                     if not exist ${destDir} mkdir ${destDir}
                     copy ${warFile} ${destDir}\\test_jenkins.war
@@ -65,7 +65,7 @@ pipeline {
                     """
                     
                     // Dockerfile이 있는 디렉토리로 이동
-                    dir('d:\\test_docker') {
+                    dir('c:\\test_docker') {
                         def app = docker.build(imageName)
                     }
                 }
